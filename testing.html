@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Sample code - Traversing an HTML Table with JavaScript and DOM Interfaces</title>
+<script>
+
+    function calculateTotal()
+    {
+        var price = document.getElementById("productPrice").value;
+
+        var quantity = document.getElementById("productQuantity").value;
+        var total = price*quantity;
+
+        document.getElementById("productTotal").value = total.toFixed(2);
+    }
+    
+    function fetchPrice(id)
+    {
+        if (id != 0)
+        {
+            var price = id*10; //get price from "database"
+            document.getElementById("productPrice").value = price;
+            calculateTotal();
+        }
+        else
+        {
+            document.getElementById("productPrice").value = 0;
+            document.getElementById("productQuantity").value = 0;
+            document.getElementById("productTotal").value = 0;
+        }
+    }
+
+</script>
+</head>
+<body>
+    <form name="sale" action="">
+        <select name="productId" onchange="fetchPrice(this.value)">
+            <option value="0"></option>
+            <option value="1">Product 1</option>
+            <option value="2">Product 2</option>
+            <option value="3">Product 3</option>
+            <option value="4">Product 4</option>
+        </select>
+        <input value="0" type="text" id="productPrice" onchange="calculateTotal()" />
+        <input value="0" type="text" id="productQuantity" onchange="calculateTotal()" />
+        <input value="0" type="text" id="productTotal" />
+    </form>
+</body>
+</html>
+
